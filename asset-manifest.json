@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/table-cleaner/static/css/main.b8735d34.css",
-    "main.js": "/table-cleaner/static/js/main.125c58a1.js",
+    "main.js": "/table-cleaner/static/js/main.0aef0394.js",
     "static/js/453.c96036cd.chunk.js": "/table-cleaner/static/js/453.c96036cd.chunk.js",
     "index.html": "/table-cleaner/index.html",
     "main.b8735d34.css.map": "/table-cleaner/static/css/main.b8735d34.css.map",
-    "main.125c58a1.js.map": "/table-cleaner/static/js/main.125c58a1.js.map",
+    "main.0aef0394.js.map": "/table-cleaner/static/js/main.0aef0394.js.map",
     "453.c96036cd.chunk.js.map": "/table-cleaner/static/js/453.c96036cd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b8735d34.css",
-    "static/js/main.125c58a1.js"
+    "static/js/main.0aef0394.js"
   ]
 }
