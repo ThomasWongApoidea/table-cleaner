@@ -1,8 +1,9 @@
 // @ts-nocheck
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import {Editor} from "@tinymce/tinymce-react";
 
 export default function Cleaner() {
+  const [fileName, setFileName] = useState("");
   const editorRef = useRef(null);
 
   useEffect(() => {
@@ -24,6 +25,7 @@ export default function Cleaner() {
           editorRef.current?.setContent(e.target?.result);
         };
         reader.readAsText(file);
+        setFileName(file.name);
       }
     };
 
@@ -66,6 +68,16 @@ export default function Cleaner() {
             "tablerowprops tablecellprops tablemergecells | tableinsertrowbefore tableinsertrowafter tabledeleterow | tableinsertcolbefore tableinsertcolafter tabledeletecol", // b
           content_style:
             "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+          setup: (editor) => {
+            editor.shortcuts.add("alt+shift+m", "Merge cells.", () => {
+              console.log("merge cells");
+              editor.execCommand("mceTableMergeCells");
+            });
+            editor.shortcuts.add("alt+shift+n", "Split cells.", () => {
+              console.log("split cells");
+              editor.execCommand("mceTableSplitCells");
+            });
+          },
         }}
       />
       <div
@@ -121,6 +133,7 @@ export default function Cleaner() {
                 }
               };
               reader.readAsText(file);
+              setFileName(file.name);
               e.target.value = "";
             }
           }}
@@ -139,7 +152,7 @@ export default function Cleaner() {
               const url = URL.createObjectURL(blob);
               const a = document.createElement("a");
               a.href = url;
-              a.download = "content.html";
+              a.download = fileName;
               document.body.appendChild(a);
               a.click();
               document.body.removeChild(a);
